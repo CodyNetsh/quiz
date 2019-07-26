@@ -1,0 +1,79 @@
+
+
+<ion-content class="background-image">
+    
+    <h1 text-right>{{displayTime}}</h1>
+
+  <br>
+  
+  <br><br>
+  <ion-slides #slides>
+
+      <ion-slide  *ngFor="let ques of questions ;let i = index ">
+          <ion-card-content><ion-card>
+        <ion-list no-lines radio-group>  
+        <ion-item>
+        <h3>Question&nbsp;{{i+1}}</h3>
+        </ion-item>
+        <ion-item>
+        <h3>{{ques.question}}</h3>
+      </ion-item>
+        <br>
+        <ion-grid><ion-row><ion-col width-50 offset-25>
+            <ion-item>
+                <ion-label><h6>{{ques.incorrect_answers[2] }}</h6></ion-label>
+                <ion-radio (click)="press3()" color="success">{{ques.incorrect_answers[2]}}</ion-radio>
+             </ion-item>   
+             <ion-item>
+                 <ion-label><h6>{{ques.incorrect_answers}}</h6></ion-label>
+             <ion-radio (click)="press1()" color="success">{{ques.incorrect_answers}}</ion-radio>
+           </ion-item>
+           <ion-item>
+               <ion-label><h6>{{ques.correct_answer }}</h6></ion-label>
+                   <ion-radio (click)="press2()" color="success">{{ques.correct_answer}}</ion-radio>
+           </ion-item>
+           <ion-item>
+               <ion-label><h6>{{ques.incorrect_answers[1] }}</h6></ion-label>
+             <ion-radio (click)="press4()" color="success">{{ques.incorrect_answers[1]}}</ion-radio>
+           </ion-item>
+    </ion-col></ion-row></ion-grid>
+    
+      </ion-list>
+    </ion-card></ion-card-content>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-grid><ion-row><ion-col width-50 offset-25>
+          <h2><b>Final Score: 
+               <h2><b>{{scoreVideoGame}}</b></h2> 
+              </b></h2>
+              <br><h4>Done go back to home page</h4><br><ion-button color="primary"(click)="done()">Done</ion-button>
+             <br><h4>Go to next quizz</h4><br><ion-button color="primary" (click)="next()">Next</ion-button>
+                   
+              <br><h4>View your answers (press)</h4><br><ion-button (click)="view()" ion-button full color="tertiary">View all correct answers</ion-button>
+           
+          <!-- <ion-button (click)="restartQuiz()" ion-button full color="tertiary">Start Again</ion-button> -->
+        </ion-col> </ion-row></ion-grid>
+        </ion-slide>
+
+    <ion-slide>
+      <ion-list no-lines radio-group>
+        <ion-item>
+          <h3>Answer</h3>
+        </ion-item>
+          <ion-item *ngFor="let answer of answer; let i = index;">
+             
+              <ion-label>
+                  {{i+1}}. {{answer.correct_answer}}
+              </ion-label>
+              
+              <ion-radio (click)="selectAnswer(answer, question)" [checked]="answer.selected" ></ion-radio>
+            
+          </ion-item>
+
+      </ion-list>
+    </ion-slide>
+  
+
+    </ion-slides>
+</ion-content>
