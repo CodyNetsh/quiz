@@ -11,6 +11,8 @@ export class ScorePage implements OnInit {
   scoreVideoGame:number;
   scoreComputer:number;
   finalScore:number = 0;
+  FirstName: any;
+  LastName: any;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -23,8 +25,10 @@ export class ScorePage implements OnInit {
       this.scoreVideoGame = params.scoreVideoGame,
       this.scoreVehicle = params.scoreVehicle ,
       this.scoreComputer = params.scoreComputer;
-      this.finalScore = params.finalScore
-      console.log(this.scoreVehicle , this.scoreVideoGame,this.scoreComputer,this.finalScore);      
+      this.finalScore = params.finalScore,
+       this.FirstName =params.FirstName,
+      this.LastName=params.LastName;
+      console.log(this.scoreVehicle , this.scoreVideoGame,this.scoreComputer,this.finalScore,this.FirstName,this.LastName);      
 });
   }
 

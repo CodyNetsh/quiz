@@ -10,7 +10,8 @@ import { Data, Router, ActivatedRoute } from '@angular/router';
 })
 export class ResultsPage {
   scoreVideoGame: number;
- 
+  FirstName;
+  LastName;
   constructor(private router
     :Router,private route: ActivatedRoute) {}
 
@@ -21,14 +22,16 @@ export class ResultsPage {
    {
        console.log(params);
       this.scoreVideoGame = params.scoreVideoGame,
-      console.log( this.scoreVideoGame); 
+      this.FirstName = params.FirstName,
+      this.LastName = params.LastName;
+      console.log( this.scoreVideoGame,this.FirstName,this.LastName); 
     });     
     }
 
   start() {
     // this.router.navigateByUrl("three")
-    console.log(this.scoreVideoGame);
-    this.router.navigate(['/three'], { queryParams:{ scoreVideoGame:this.scoreVideoGame} });
+    console.log(this.scoreVideoGame,this.FirstName,this.LastName);
+    this.router.navigate(['/three'], { queryParams:{ scoreVideoGame:this.scoreVideoGame,FirstName:this.FirstName,LastName:this.LastName} });
    
   }
   

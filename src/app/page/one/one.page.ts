@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-one',
@@ -8,11 +8,25 @@ import { Router } from '@angular/router';
 })
 export class OnePage{
  
- 
+  FirstName;
+  LastName;
   constructor(private router
-    :Router) {}
+    :Router ,private route: ActivatedRoute) {}
 
   start2() {
-    this.router.navigateByUrl("four")
+    console.log(this.FirstName, this.LastName);
+    this.router.navigate(['/four'], { queryParams:{ FirstName:this.FirstName , LastName:this.LastName} });
+     
+  }
+  ngOnInit() {
+    
+    this.route.queryParams
+    .subscribe(params =>
+ {
+     console.log(params);
+    this.FirstName = params.FirstName,
+    this.LastName = params.LastName;
+    console.log( this.FirstName,this.LastName); 
+  });     
   }
 }

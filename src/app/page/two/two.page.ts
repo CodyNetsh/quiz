@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class TwoPage  {
   scoreVideoGame: number;
   scoreVehicle: number;
+  FirstName: any;
+  LastName: any;
 
    
   constructor(private router:Router,private route: ActivatedRoute) {}
@@ -20,14 +22,17 @@ export class TwoPage  {
  {
      console.log(params);
     this.scoreVideoGame = params.scoreVideoGame,
-    this.scoreVehicle =params.scoreVehicle
-    console.log( this.scoreVideoGame,this.scoreVehicle); 
+    this.scoreVehicle =params.scoreVehicle,
+    this.FirstName =params.FirstName,
+    this.LastName=params.LastName;
+    console.log( this.scoreVideoGame,this.scoreVehicle,this.FirstName,this.LastName); 
   });     
   }
   start1() {
     // this.router.navigateByUrl("five")
-    console.log(this.scoreVideoGame,this.scoreVehicle);
-    this.router.navigate(['/five'], { queryParams:{ scoreVideoGame:this.scoreVideoGame,scoreVehicle:this.scoreVehicle} });
+    console.log(this.scoreVideoGame,this.scoreVehicle,this.FirstName,this.LastName);
+    this.router.navigate(['/five'], { queryParams:{ scoreVideoGame:this.scoreVideoGame,
+      scoreVehicle:this.scoreVehicle,LastName:this.LastName,FirstName:this.FirstName} });
  
   }
 }

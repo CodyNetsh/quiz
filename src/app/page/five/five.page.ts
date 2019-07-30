@@ -29,8 +29,10 @@ incorrect:any;
   scoreVehicle: number;
   scoreVideoGame: number;
   finalScore :number =  0;
+  FirstName: any;
+  LastName: any;
 
-  constructor(private service:DataService,private router:Router,
+  constructor(private service:DataService, private router:Router,
     private route: ActivatedRoute) {
 
     this.service.load().subscribe(data =>{
@@ -38,22 +40,22 @@ incorrect:any;
       this.questions = this.value.results;
       this.answer = this.value.results;
       console.log(data);
-      // this.slides.lockSwipes(true);
-       
    });
-   
    }
 
   ngOnInit() {
     this.initTimer();
     this. startTimer(); 
+
     this.route.queryParams
       .subscribe(params =>
    {
        console.log(params);
        this.scoreVideoGame = params.scoreVideoGame;
       this.scoreVehicle = params.scoreVehicle,
-      console.log( this.scoreVehicle,this.scoreVideoGame); 
+      this.FirstName =params.FirstName,
+      this.LastName=params.LastName;
+      console.log( this.scoreVehicle,this.scoreVideoGame,this.FirstName,this.LastName); 
     });     
   }
   initTimer() {
@@ -137,13 +139,19 @@ incorrect:any;
       //   if(this.hasAnswered ==true){
       //     this.nextSlide();
       //   }
+      back(){
+        this.scoreVideoGame = 10;
+            this.slides.lockSwipes(false);
+            this.slides.slideTo(10, 1000);
+            this.slides.lockSwipes(false);
+      }
       next(){
         this.finalScore =  +this.scoreComputer + +this.scoreVehicle + +this.scoreVideoGame;
         
 
         console.log(this.scoreComputer,this.scoreVehicle,this.scoreVideoGame, this.finalScore);
         this.router.navigate(['/score'], { queryParams:{ scoreComputer:this.scoreComputer,scoreVehicle:this.scoreVehicle, 
-          scoreVideoGame:this.scoreVideoGame , finalScore:this.finalScore} });
+          scoreVideoGame:this.scoreVideoGame , finalScore:this.finalScore,FirstName:this.FirstName,LastName:this.LastName} });
      
       }
       done(){

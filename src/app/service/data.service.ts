@@ -10,7 +10,7 @@ export class DataService {
       return  this.http.get('https://opentdb.com/api.php?amount=10&category=18&type=boolean');
       }
       load1() {
-        return  this.http.get('https://opentdb.com/api.php?amount=10&category=15&difficulty=hard');
+        return  this.http.get('https://opentdb.com/api.php?amount=10&category=15&difficulty=hard&type=boolean');
         }
         load2() {
           return  this.http.get('https://opentdb.com/api.php?amount=10&category=28&difficulty=easy');

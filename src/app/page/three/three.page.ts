@@ -27,6 +27,8 @@ export class ThreePage implements OnInit {
   timeInSeconds: any;
   time: any;
   scoreVideoGame: number;
+  FirstName: any;
+  LastName: any;
 
   
     constructor(private service:DataService , private router:Router,
@@ -51,7 +53,9 @@ export class ThreePage implements OnInit {
    {
        console.log(params);
       this.scoreVideoGame = params.scoreVideoGame,
-      console.log( this.scoreVideoGame); 
+      this.FirstName =params.FirstName,
+      this.LastName=params.LastName;
+      console.log( this.scoreVideoGame,this.FirstName,this.LastName); 
     });     
     }
     initTimer() {
@@ -137,9 +141,16 @@ export class ThreePage implements OnInit {
          
           this.router.navigateByUrl("home");
         }
+        back(){
+          this.scoreVideoGame = 10;
+            this.slides.lockSwipes(false);
+            this.slides.slideTo(10, 1000);
+            this.slides.lockSwipes(false);
+        }
         next(){
-          console.log(this.scoreVideoGame,this.scoreVehicle);
-          this.router.navigate(['/two'], { queryParams:{ scoreVideoGame:this.scoreVideoGame,scoreVehicle:this.scoreVehicle} });
+          console.log(this.scoreVideoGame,this.scoreVehicle,this.FirstName,this.LastName);
+          this.router.navigate(['/two'], { queryParams:{ scoreVideoGame:this.scoreVideoGame,
+            scoreVehicle:this.scoreVehicle,FirstName:this.FirstName,LastName:this.LastName} });
         }
         view(){
           this.nextSlide();

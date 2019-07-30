@@ -48,7 +48,7 @@
                <h1>{{scoreComputer}}</h1> 
           </h2>
           <br><h4>Done go back to home page</h4><br><ion-button color="primary"(click)="done()">Done</ion-button>
-          <br><h4>Go to next quizz</h4><br><ion-button color="primary" (click)="next()">Next</ion-button>
+          <br><h4>View final score for all categories</h4><br><ion-button color="primary" (click)="next()">View Final Score</ion-button>
                
           <br><h4>View your answers (press)</h4><br><ion-button (click)="view()" ion-button full color="tertiary">View all correct answers</ion-button>
        
@@ -70,8 +70,9 @@
               <ion-radio (click)="selectAnswer(answer, question)" [checked]="answer.selected" ></ion-radio>
             
           </ion-item>
-
-      </ion-list>
+   
+      <ion-button (click)="back()" ion-button full color="tertiary">Back</ion-button>
+    </ion-list>
     </ion-slide>
   
 

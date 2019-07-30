@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,17 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  FirstName=""
+  LastName=""
   constructor(private router
-    :Router) {}
+    :Router,private route: ActivatedRoute) {}
 
   start() {
-    this.router.navigateByUrl("results")
+    
+    console.log(this.FirstName, this.LastName);
+    this.router.navigate(['/results'], { queryParams:{ FirstName:this.FirstName , LastName:this.LastName} });
+     
   }
   start1() {
-    this.router.navigateByUrl("two")
+    console.log(this.FirstName, this.LastName);
+    this.router.navigate(['/two'], { queryParams:{ FirstName:this.FirstName , LastName:this.LastName} });
   }
   start2() {
-    this.router.navigateByUrl("one")
+    console.log(this.FirstName, this.LastName);
+    this.router.navigate(['/one'], { queryParams:{ FirstName:this.FirstName , LastName:this.LastName} });
   }
 }

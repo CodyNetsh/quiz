@@ -26,7 +26,8 @@ export class FourPage implements OnInit {
   hasStarted: boolean;
   timeInSeconds: any;
   time: any;
-  
+  FirstName;
+  LastName;
     constructor(private service:DataService, private router:Router,private route: ActivatedRoute) {
   
       this.service.load1().subscribe(data =>{
@@ -43,8 +44,16 @@ export class FourPage implements OnInit {
     ngOnInit() {
     
       this.initTimer();
-      this. startTimer(); 
+      this. startTimer();
       
+      this.route.queryParams
+      .subscribe(params =>
+        {
+            console.log(params);
+           this.FirstName = params.FirstName,
+           this.LastName = params.LastName;
+           console.log( this.FirstName,this.LastName); 
+         });     
     }
     initTimer() {
       // Pomodoro is usually for 25 minutes
@@ -128,10 +137,17 @@ export class FourPage implements OnInit {
         done(){
           this.router.navigateByUrl("home");
         }
+        back(){
+          this.scoreVideoGame = 10;
+            this.slides.lockSwipes(false);
+            this.slides.slideTo(10, 1000);
+            this.slides.lockSwipes(false);
+       
+      }
         next(){
           
-          console.log(this.scoreVideoGame);
-         this.router.navigate(['/results'], { queryParams:{ scoreVideoGame:this.scoreVideoGame} });
+          console.log(this.scoreVideoGame,this.FirstName, this.LastName);
+         this.router.navigate(['/results'], { queryParams:{ scoreVideoGame:this.scoreVideoGame,FirstName:this.FirstName , LastName:this.LastName} });
         
         }
         view(){
