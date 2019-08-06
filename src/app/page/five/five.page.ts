@@ -18,7 +18,7 @@ incorrect:any;
   slideOptions: any;
   @ViewChild('slides') slides: any;
   hidevalue: boolean;
-  timer: NodeJS.Timeout;
+  // timer: NodeJS.Timeout;
   timeInSeconds: any;
   runTimer: boolean;
   hasStarted: boolean;
